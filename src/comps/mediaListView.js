@@ -14,7 +14,7 @@ export default function MediaListView(props) {
                 props.mediaArr.map(item => {
                     if (props.selectedYear == "all" || parseInt(item.Year) == props.selectedYear) {
                         return (
-                            <div key={item.Title} className="co-2 col-sm-4 border overflow-hidden p-0 " >
+                            <div key={item.Title} className="co-2 col-sm-5 border overflow-hidden p-0 " >
                                 <img src={item.Poster} className="float-start me-1 card border border-2 w-25" />
                                 <div className='row h-100'>
                                     <h5 className='fs-6'>{item.Title}</h5>

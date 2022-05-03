@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
+let srch = "None"
 function UserInput(props) {
 
   let yearsArr = [1989, 1995, 2000, 2001, 2002, 2003, 2008, 2010, 2020, 2021]
@@ -9,7 +10,7 @@ function UserInput(props) {
   let sortByRef = useRef();
 
   useEffect(() => {
-    console.log({ msg: "UI-useEffect " })
+    // console.log({ msg: "UI-useEffect " })
   }, [])
 
   return (
@@ -17,7 +18,7 @@ function UserInput(props) {
       <div className='d-flex align-items-center mx-1 text-light '>
         <div className='d-flex w-50  '>
           <input ref={searchInputRef} className='form-control w-100 p-1'></input>
-          <Link to={"/search/" + searchInputRef.current?.value}> <button className='btn bg-dark text-light mx-1' onClick={() => { props.setSearch(searchInputRef.current.value) }}>Search</button></Link>
+          <Link to={"/search/" + srch}> <button className='btn bg-dark text-light mx-1' onClick={ () => { srch = searchInputRef.current.value; props.setSearch(searchInputRef.current.value) }}>Search</button></Link>
         </div>
 
         <div className='d-flex align-items-center justify-content-start mx-1'>
@@ -30,7 +31,7 @@ function UserInput(props) {
       </div>
 
       <div className='row mx-1 justify-content-between' ref={yearBtnsRef}>
-        <Link to={"/year/" + "all"} key={0} className='col col-sm-1 btn bg-black text-light m-2 py-0' onClick={() => { props.setYear("all") }}> All</Link>
+        <Link to={"/year/all"}  className='col col-sm-1 btn bg-black text-light m-2 py-0' onClick={() => { props.setYear("all") }}> All</Link>
         {yearsArr.map(
           (item, index) => {
             return (
