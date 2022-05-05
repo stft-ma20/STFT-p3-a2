@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import {API_KEY} from '../data/privateAPIKey'
 
 function MovieInfo(props) {
     let movieID = props.match.params.id;
@@ -11,7 +12,7 @@ function MovieInfo(props) {
 
     const doMovieAPI = async (_movieID) => {
         setIsLoading(true)
-        let url = `http://www.omdbapi.com/?i=${_movieID}&apikey=46cf0447`
+        let url = `http://www.omdbapi.com/?i=${_movieID}&apikey=${API_KEY}`
         // let resp = await fetch(url);
         // let data = await resp.json();
         let resp = await axios(url);
@@ -39,7 +40,7 @@ function MovieInfo(props) {
     }, [])
 
     return (
-        <div className='row py-3 overflow-hidden h-100 border shadow '>
+        <div className='row py-3 overflow-hidden h-100 border shadow text-center '>
             {isLoading ? <h2 className='display-1 position-absolute top-50 start-50 translate-middle'>{LoadingMessage}</h2> :
                 <React.Fragment>
                     <div className='col h-100 w-25 col-3 align-self-stretch '>

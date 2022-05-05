@@ -3,6 +3,7 @@ import axios from "axios";
 import { sortBy } from "lodash";
 import { BrowserRouter as Router, Routes, Switch, Route, Link } from 'react-router-dom';
 
+import {API_KEY} from './data/privateAPIKey'
 import './App.css';
 import MediaListView from './comps/mediaListView';
 import UserInput from './comps/inputComps/userInput';
@@ -19,24 +20,22 @@ function App() {
   let [year, setYear] = useState("all");
   let [isLoading, setIsLoading] = useState(false);
   let [LoadingMessage,setLooadingMessage] = useState("Loading Movies...")
-  
   useEffect(() => {  
     doAPI(search);
   }, [search, year, sortType]);
   
 
   const doAPI = async (_search) => {
-
     setIsLoading(true)
+
     // let resp = await fetch(url);
     // let data = await resp.json();
-    let resp = await axios.get(`http://www.omdbapi.com/${""}?apikey=46cf0447${year == "all" ? "":"&y=" +year}&s=${_search}`)
-
-    if (resp.data.Response == "True") {
+    let resp = await axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}${year == "all" ? "":"&y=" +year}&s=${_search}`)
+    if (resp.data.Response === "True") {
       setMediaArr(sortBy(resp.data.Search, sortType))
       setIsLoading(false)
     } else {
-      setLooadingMessage("There are no results :(");
+      setLooadingMessage(resp.data.Error);
     }
     
   }
