@@ -3,4 +3,4 @@ react + Bootstrao movies VOD.
 
 movies dtatbase: http://www.omdbapi.com;
 
-** Important** : privateAPIKey value in "src/data/privateAPIKey.js" must be edited.default value is "000000". 
+**Important** : privateAPIKey value in "src/data/privateAPIKey.js" must be edited.default value is "000000". 
