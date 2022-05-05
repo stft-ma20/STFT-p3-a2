@@ -15,7 +15,7 @@ function UserInput(props) {
 
   return (
     <div className="row bg-secondary">
-      <div className='d-flex align-items-center mx-1 text-light '>
+      <div className='d-flex align-items-center mx-1 text-light  '>
         <div className='d-flex w-50  '>
           <input ref={searchInputRef} defaultValue="bank" className='form-control w-100 p-1'></input>
           <Link to={"/search/" + srch}> <button className='btn bg-dark text-light mx-1' onClick={ () => { srch = searchInputRef.current.value; props.setSearch(searchInputRef.current.value) }}>Search</button></Link>

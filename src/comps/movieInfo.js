@@ -40,13 +40,13 @@ function MovieInfo(props) {
     }, [])
 
     return (
-        <div className='row py-3 overflow-hidden h-100 border shadow text-center '>
+        <div className='row py-3 overflow-hidden h-100 border m-1 shadow text-center '>
             {isLoading ? <h2 className='display-1 position-absolute top-50 start-50 translate-middle'>{LoadingMessage}</h2> :
                 <React.Fragment>
-                    <div className='col h-100 w-25 col-3 align-self-stretch '>
-                        <img src={mov.Poster} className="me-3 img-fluid  border border-dark border-2  " alt="" />
+                    <div className='col h-100 w-25 col-3 align-self-stretch  '>
+                        <img src={mov.Poster} className="me-3 img-fluid  border border-dark border-5  " alt="" />
                     </div>
-                    <div className="col d-flex flex-column ">
+                    <div className="col d-flex flex-column border-start border-secondary">
                         <h1 className=''>{mov.Title}</h1>
                         <span><span className='fw-bold'>Release: </span> {mov.Year}</span>
                         <div className="mb-auto mt-2   ">
@@ -55,14 +55,14 @@ function MovieInfo(props) {
                         </div>
 
                         <span className='mt-auto p-0'><span className='fw-bold'>Rating: </span>{mov.imdbRating}</span>
-                        <div className=' row  justify-content-center align-content-center ms-auto h-25    mb-0 w-50 '>
+                        <div className=' row  justify-content-center align-content-center m-auto h-25 mb-0 w-50 border-bottom border-warning'>
 
                             {starsPrint()}
                             {
                                 stars_ar.map((item) => {
                                     if (item == 1) {
                                         return (
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" fill="yellow" stroke='blue ' stroke-width="2%" className="col d-none  d-md-flex  text-danger bi bi-star-fill " viewBox="0 0 16 16">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" fill="yellow" stroke='blue ' stroke-width="2%" className=" col d-none  d-md-flex  text-danger bi bi-star-fill " viewBox="0 0 16 16">
                                                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                             </svg>
                                         )
@@ -84,7 +84,7 @@ function MovieInfo(props) {
                             }
                             {
 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="yellow" stroke='blue ' stroke-width="2%" className=" mt-auto d-md-none  h-100 text-black bi bi-star-fill" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="yellow" stroke='blue ' stroke-width="1%" className=" mt-auto d-md-none p-1 h-100 text-black bi bi-star-fill" viewBox="0 0 16 16">
                                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                     <text x="35%" y="65%" fill="white" font-size="0.25em" className=' '>{mov.imdbRating}</text>
                                 </svg>
