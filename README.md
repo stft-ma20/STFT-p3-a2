@@ -1,5 +1,6 @@
 # STFT-p3-a2
-React + Bootstrao basic movies VOD.
+React + Bootstrao basic movies VOD. 
+
 Online demo link: : https://ma-stft-p3-a2.netlify.app/
 
 movies meta-data source : http://www.omdbapi.com;
