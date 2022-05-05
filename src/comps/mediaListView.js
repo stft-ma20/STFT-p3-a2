@@ -3,27 +3,24 @@ import { Link } from 'react-router-dom'
 
 export default function MediaListView(props) {
 
-    let [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
     },[props.selectedYear])
 
     return (
-        <div className="row moviesRow mt-2 px-1">
+        <div className="row justify-content-center moviesRow mt-2 px-1">
             {
                 props.mediaArr.map(item => {
-                    if (props.selectedYear == "all" || parseInt(item.Year) == props.selectedYear) {
                         return (
-                            <div key={item.Title} className="co-2 col-sm-5 border overflow-hidden p-0 " >
-                                <img src={item.Poster} className="float-start me-1 card border border-2 w-25" />
+                            <div key={item.Title} className="co-2 shadow mb-3 mx-1 col-sm-5 border overflow-hidden p-0 " >
+                                <img src={item.Poster} className="float-start me-1 my-2 card border-secondary border-2 w-25" />
                                 <div className='row h-100'>
-                                    <h5 className='fs-6'>{item.Title}</h5>
-                                    <span className=' '>{parseInt(item.Year)}</span>
+                                    <h5 className='display-1 fw-bold fs-6'>{item.Title}</h5>
+                                    <span className=' '><span className='fw-bold'>Release: </span> {parseInt(item.Year)}</span>
                                     <Link to={"/video/" + item.imdbID} className='w-auto btn btn-info  align-self-end mb-3 ms-2 '>More Info</Link>
                                 </div>
                             </div>
                         )
-                    }
                 }
                 )
             }

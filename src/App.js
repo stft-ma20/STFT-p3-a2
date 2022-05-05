@@ -10,44 +10,43 @@ import MovieInfo from './comps/movieInfo';
 
 
 
+
 function App() {
 
   let [search, setSearch] = useState("bank")
   let [mediaArr, setMediaArr] = useState([]);
-  let [sortType, setSortType] = useState("Title");
+  let [sortType, setSortType] = useState();
   let [year, setYear] = useState("all");
-  let [isLoading, setIsLoading] = useState(true);
-
-  let LoadingMessage = "Loading..."
+  let [isLoading, setIsLoading] = useState(false);
+  let [LoadingMessage,setLooadingMessage] = useState("Loading Movies...")
   
-  useEffect(() => {
+  useEffect(() => {  
     doAPI(search);
-    
   }, [search, year, sortType]);
   
+
   const doAPI = async (_search) => {
+
     setIsLoading(true)
-    let url = `http://www.omdbapi.com/?s=${_search}&apikey=46cf0447`
     // let resp = await fetch(url);
     // let data = await resp.json();
-    let resp = await axios.get(url)
+    let resp = await axios.get(`http://www.omdbapi.com/${""}?apikey=46cf0447${year == "all" ? "":"&y=" +year}&s=${_search}`)
 
     if (resp.data.Response == "True") {
       setMediaArr(sortBy(resp.data.Search, sortType))
+      setIsLoading(false)
     } else {
-      LoadingMessage = "There are no results"
+      setLooadingMessage("There are no results :(");
     }
-
-    setIsLoading(false)
+    
   }
-
 
   return (
 
       <Router>
         <div className="container bg-light  position-relative min-vh-100 ">
           <UserInput sortMedia={setSortType} setSearch={setSearch} setYear={setYear} />
-          {isLoading ? <h2 className='display-1 position-absolute top-50 start-50 translate-middle'>{LoadingMessage}</h2> :
+          {isLoading ? <h2 className='display-3 position-absolute top-50 start-50 translate-middle'>{LoadingMessage}</h2> :
           <Switch>
             <Route exact path={["/", "/year/:yr", "/search/:searchQ"]} render={() =>
               <div >
